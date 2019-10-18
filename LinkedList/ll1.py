@@ -4,7 +4,6 @@ class Node:
         self.data = data
         self.next = next
 
-
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -50,6 +49,42 @@ class LinkedList:
             return 0
         return 1 + self.len_recursive(node.next)
 
+    def delete_node(self,key):
+        curr_node = self.head
+        
+        if curr_node is None:
+            print("Linked List is Empty!!")
+            return
+
+        if curr_node and curr_node.data == key:
+            self.head = curr_node.next
+            curr_node = None
+            return
+        prev = None
+        while curr_node and curr_node.data != key:
+            prev = curr_node
+            curr_node = curr_node.next
+        prev.next = curr_node.next
+        curr_node = None
+
+    def delete_node_at_position(self,position):
+        curr_node = self.head
+        if position == 0:
+            slef.head = curr_node.next
+            curr_node = None
+            return
+        if curr_node is None:
+            print("Linked list is Empty!!")
+            return
+        count = 1
+        prev = None
+        while curr_node and count != position:
+            prev = curr_node
+            curr_node = curr_node.next 
+            count+=1
+        prev.next = curr_node.next
+        curr_node = None
+        
     def print_ll(self):
         cur_node = self.head
         while cur_node:
@@ -70,3 +105,8 @@ llist.insert_after_node(llist.head.next.next.next.next.next.next, "E")
 llist.print_ll()
 print("Len of Linked-List:-", llist.len_iterative()+1)
 print("len in Recursive_Manner:-",llist.len_recursive(llist.head)+1)
+# llist.delete_node(50)
+# llist.delete_node(400)
+# llist.delete_node_at_position(3)
+# llist.print_ll()
+
