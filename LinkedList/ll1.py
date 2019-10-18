@@ -85,12 +85,18 @@ class LinkedList:
         prev.next = curr_node.next
         curr_node = None
         
+    def reverse_ll1(self,value):
+        curr_node = value
+        if curr_node is None:
+            return
+        prev = self.reverse_ll(curr_node.next)
+        print(curr_node.data)            
+
     def print_ll(self):
         cur_node = self.head
         while cur_node:
             print(cur_node.data)
             cur_node = cur_node.next
-
 
 llist = LinkedList()
 llist.append(20)
@@ -109,4 +115,6 @@ print("len in Recursive_Manner:-",llist.len_recursive(llist.head)+1)
 # llist.delete_node(400)
 # llist.delete_node_at_position(3)
 # llist.print_ll()
+llist.reverse_ll1(llist.head)
+
 
